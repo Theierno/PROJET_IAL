@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^categorie/(\d+)$ index.php?categorie=$1 [L]

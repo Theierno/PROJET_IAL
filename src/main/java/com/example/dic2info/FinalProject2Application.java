@@ -20,10 +20,10 @@ import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
-//@ComponentScan(basePackages = {"com.example.dic2info.wsSOAP"})
+@ComponentScan(basePackages = {"com.example.dic2info.wsSOAP"})
 @SpringBootApplication
 @EnableTransactionManagement
-//@EnableWs
+@EnableWs
 public class FinalProject2Application implements CommandLineRunner {
     @Autowired
     private UserRepository userRepository;
@@ -46,41 +46,41 @@ public class FinalProject2Application implements CommandLineRunner {
     }
 
 
-//    @Bean
-//    public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
-//        MessageDispatcherServlet servlet = new MessageDispatcherServlet();
-//        servlet.setApplicationContext(applicationContext);
-//        servlet.setTransformWsdlLocations(true);
-//        return new ServletRegistrationBean<>(servlet, "/ws/*");
-//    }
-//
-//    @Bean(name = "UserWs")
-//    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema usersSchema) {
-//        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-//        wsdl11Definition.setPortTypeName("UserServicePort");
-//        wsdl11Definition.setLocationUri("/ws");
-//        wsdl11Definition.setTargetNamespace("http://localhost/user-schema");
-//        wsdl11Definition.setSchema(usersSchema);
-//        return wsdl11Definition;
-//    }
-//
-//    @Bean(name = "UserRoleWs")
-//    public DefaultWsdl11Definition userroleWsdlDefinition(XsdSchema userRoleSchema) {
-//        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
-//        wsdl11Definition.setPortTypeName("RolePort");
-//        wsdl11Definition.setLocationUri("/ws");
-//        wsdl11Definition.setTargetNamespace("http://localhost/user-role-schema");
-//        wsdl11Definition.setSchema(userRoleSchema);
-//        return wsdl11Definition;
-//    }
-//
-//    @Bean
-//    public XsdSchema userRoleSchema() {
-//        return new SimpleXsdSchema(new ClassPathResource("UserRole.xsd"));
-//    }
-//
-//    @Bean
-//    public XsdSchema usersSchema() {
-//        return new SimpleXsdSchema(new ClassPathResource("User.xsd"));
-//    }
+   @Bean
+   public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
+       MessageDispatcherServlet servlet = new MessageDispatcherServlet();
+       servlet.setApplicationContext(applicationContext);
+       servlet.setTransformWsdlLocations(true);
+       return new ServletRegistrationBean<>(servlet, "/ws/*");
+   }
+
+   @Bean(name = "UserWs")
+   public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema usersSchema) {
+       DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+       wsdl11Definition.setPortTypeName("UserServicePort");
+       wsdl11Definition.setLocationUri("/ws");
+       wsdl11Definition.setTargetNamespace("http://localhost/user-schema");
+       wsdl11Definition.setSchema(usersSchema);
+       return wsdl11Definition;
+   }
+
+   @Bean(name = "UserRoleWs")
+   public DefaultWsdl11Definition userroleWsdlDefinition(XsdSchema userRoleSchema) {
+       DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+       wsdl11Definition.setPortTypeName("RolePort");
+       wsdl11Definition.setLocationUri("/ws");
+       wsdl11Definition.setTargetNamespace("http://localhost/user-role-schema");
+       wsdl11Definition.setSchema(userRoleSchema);
+       return wsdl11Definition;
+   }
+
+   @Bean
+   public XsdSchema userRoleSchema() {
+       return new SimpleXsdSchema(new ClassPathResource("UserRole.xsd"));
+   }
+
+   @Bean
+   public XsdSchema usersSchema() {
+       return new SimpleXsdSchema(new ClassPathResource("User.xsd"));
+   }
 }
